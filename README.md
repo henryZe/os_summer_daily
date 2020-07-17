@@ -27,7 +27,27 @@
   1. 第一例，hello world
 
 * 计划：
+
 	1. 通过 Rust by Example 利用两天，了解梗概
+
 * Better than Never, Go!
 
 * 今晚好好睡觉
+
+## Day 2
+
+* 事件1：完成 RBE 1st 2nd 3rd Chapter
+
+  1. 感觉 C语言和 Rust语言还是有相通之处，其实也都是编译语言
+
+* 计划：
+
+  1. 感觉计划好慢，RBE 可能要挑重点的看了，感觉鸭梨...
+
+  2. 哈哈哈，感觉 Rust 编译错误信息很丰富，非常方便调试，be friendly towards rookie
+
+  3. 感觉时间投入不够
+
+  4. 明天结合 Rust程序设计语言 一起看
+
+* 早上要练车，5点多就醒了，睡不够工作一天好累；今晚好好睡觉；Go!
