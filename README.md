@@ -77,3 +77,21 @@
   5. 晚上 19点 ~ 22点, 完成 12th chapter Cargo
 
 * 还是要坚持，今晚好好睡觉，Go!
+
+## Day 4
+
+* 事件1：review RBE
+  
+  1. RBE 文档设计还是非常合理
+
+  2. learn by doing
+
+  3. 有空闲的时间静下心，学起来效率还是高出不少
+
+* 计划：
+
+  1. 完成 8th chapter
+
+* 坚持 daily review, 逼自己一把，今晚好好睡觉，Go!
+
+## Day 5
