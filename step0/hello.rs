@@ -168,7 +168,6 @@ fn sub_main() {
     impl Display for Color {
         // `f` is a buffer, and this method must write the formatted string into it
         fn fmt(&self, f: &mut Formatter) -> fmt::Result {
-
             write!(f, "RGB ({}, {}, {}) 0x{:02X?}{:02X?}{:02X?}",
                     self.red, self.green, self.blue,
                     self.red, self.green, self.blue)
