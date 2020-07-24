@@ -1,3 +1,28 @@
+#![allow(dead_code)]
+
+use crate::List::*;
+
+enum Status {
+    Rich,
+    Poor,
+}
+enum Work {
+    Civilian,
+    Soldier,
+}
+
+enum Number {
+    Zero,
+    One,
+    Two,
+}
+
+enum Color {
+    Red = 0xff0000,
+    Green = 0x00ff00,
+    Blue = 0x0000ff,
+}
+
 fn main() {
     // 3.1 Structures
     #[derive(Debug)]
@@ -66,8 +91,126 @@ fn main() {
         let br: Point = Point { x: arg1, y: arg0.y };
         Rectangle { top_left: tl, bottom_right: br }
     }
-
     println!("rectangle {:?}", square(point, 100.0));
+
+    // 3.2 Enums
+    enum WebEvent {
+        // An `enum` may either be `unit-like`,
+        PageLoad,
+        PageUnload,
+        // like tuple structs,
+        KeyPress(char),
+        Paste(String),
+        // or c-like structures.
+        Click { x: i64, y: i64 },
+    }
+    // A function which takes a `WebEvent` enum as an argument and
+    // returns nothing.
+    fn inspect(event: WebEvent) {
+        match event {
+            WebEvent::PageLoad => println!("page loaded"),
+            WebEvent::PageUnload => println!("page unloaded"),
+            // Destructure `c` from inside the `enum`.
+            WebEvent::KeyPress(c) => println!("pressed '{}'.", c),
+            WebEvent::Paste(s) => println!("pasted \"{}\".", s),
+            // Destructure `Click` into `x` and `y`.
+            WebEvent::Click { x, y } => {
+                println!("clicked at x={}, y={}.", x, y);
+            },
+        }
+    }
+
+    let pressed = WebEvent::KeyPress('x');
+    // `to_owned()` creates an owned `String` from a string slice.
+    let pasted  = WebEvent::Paste("my text".to_owned());
+    let click   = WebEvent::Click { x: 20, y: 80 };
+    let load    = WebEvent::PageLoad;
+    let unload  = WebEvent::PageUnload;
+
+    inspect(pressed);
+    inspect(pasted);
+    inspect(click);
+    inspect(load);
+    inspect(unload);
+
+    enum VeryVerboseEnumOfThingsToDoWithNumbers {
+        Add,
+        Subtract,
+    }
+    impl VeryVerboseEnumOfThingsToDoWithNumbers {
+        fn run(&self, x: i32, y: i32) -> i32 {
+            match self {
+                Self::Add => x + y,
+                Self::Subtract => x - y,
+            }
+        }
+    }
+    // Creates a type alias
+    type Operations = VeryVerboseEnumOfThingsToDoWithNumbers;
+
+    // We can refer to each variant via its alias, not its long and inconvenient
+    // name.
+    let enum_add = Operations::Add;
+    println!("{}", enum_add.run(12, 1));
+    println!("{}", Operations::Subtract.run(12, 1));
+
+    // 3.2.1 use
+    // Explicitly `use` each name so they are available without
+    // manual scoping.
+    use crate::Status::{Poor, Rich};
+    // Automatically `use` each name inside `Work`.
+    use crate::Work::*;
+    // Equivalent to `Status::Poor`.
+    let status = Poor;
+    // Equivalent to `Work::Civilian`.
+    let work = Civilian;
+    match status {
+        // Note the lack of scoping because of the explicit `use` above.
+        Rich => println!("The rich have lots of money!"),
+        Poor => println!("The poor have no money..."),
+    }
+    match work {
+        // Note again the lack of scoping.
+        Civilian => println!("Civilians work!"),
+        Soldier  => println!("Soldiers fight!"),
+    }
+
+    // 3.2.2 C-like
+    // `enums` can be cast as integers.
+    println!("zero is {}", Number::Zero as i32);
+    println!("one is {}", Number::One as i32);
+
+    println!("roses are #{:06x}", Color::Red as i32);
+    println!("violets are #{:06x}", Color::Blue as i32);
+
+    // 3.2.3 linked-list
+    enum List {
+        // Cons: Tuple struct that wraps an element and a pointer to the next node
+        Cons(u32, Box<List>),
+        // Nil: A node that signifies the end of the linked list
+        Nil,
+    }
+    // Methods can be attached to an enum
+    impl List {
+        // Create an empty list
+        fn new() -> List {
+            // `Nil` has type `List`
+            Nil
+        }
+        // Consume a list, and return the same list with a new element at its front
+        fn prepend(self, elem: u32) -> List {
+            // `Cons` also has type List
+            Cons(elem, Box::new(self))
+        }
+        fn len(&self) -> u32 {
+            match *self {
+                Cons(_, ref tail) => 1 + tail.len(),
+                // Base Case: An empty list has zero length
+                Nil => 0
+            }
+        }
+
 }
+
 
 
