@@ -2,9 +2,15 @@
 
 ## Directory
 
-* [Day1 (2020-07-16)](#Day001)
+* [Day1 (2020-07-16)](#Day1)
+* [Day2 (2020-07-17)](#Day2)
+* [Day3 (2020-07-18)](#Day3)
+* [Day4 (2020-07-22)](#Day4)
+* [Day5 (2020-07-23)](#Day5)
+* [Day6 (2020-07-24)](#Day6)
+* [Day7 (2020-07-30)](#Day7)
 
-## Day 1
+## Day1
 
 * 事件1：大略浏览 Tutorial 信息
 
@@ -34,7 +40,7 @@
 
 * 今晚好好睡觉
 
-## Day 2
+## Day2
 
 * 事件1：完成 RBE 1st 2nd 3rd Chapter
 
@@ -52,7 +58,7 @@
 
 * 早上要练车，5点多就醒了，睡不够工作一天好累；今晚好好睡觉；Go!
 
-## Day 3
+## Day3
 
 * 事件1：配置本地笔记本
 
@@ -78,7 +84,7 @@
 
 * 还是要坚持，今晚好好睡觉，Go!
 
-## Day 4
+## Day4
 
 * 事件1：review RBE
   
@@ -94,4 +100,25 @@
 
 * 坚持 daily review, 逼自己一把，今晚好好睡觉，Go!
 
-## Day 5
+## Day5
+
+* forget to record
+
+## Day6
+
+* forget to record
+
+## Day7
+
+* 事件1：
+
+  1. 对不起自己，最近芯片临近 Tape Out，确实 wic(wakeup interrupt controller) hardware bug 需要澄清，赶上最忙的时候，没有挤出时间
+
+  2. 再忙还是要 review daily，反思反思
+
+* 计划：
+
+  1. 完成 5，6，7 th chapter, hahah, 之前的计划一直延迟，现在刚完成 4th chapter
+
+* 坚持 daily review, 逼自己一把，今晚好好睡觉，Go!
+

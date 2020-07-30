@@ -1,6 +1,52 @@
 #![allow(dead_code)]
 
 use crate::List::*;
+enum List {
+    // Cons: Tuple struct that wraps an element and a pointer to the next node
+    Cons(u32, Box<List>),
+    // Nil: A node that signifies the end of the linked list
+    Nil,
+}
+// Methods can be attached to an enum
+impl List {
+    // Create an empty list
+    fn new() -> List {
+        // `Nil` has type `List`
+        Nil
+    }
+    // Consume a list, and return the same list with a new element at its front
+    fn prepend(self, elem: u32) -> List {
+        // `Cons` also has type List
+        Cons(elem, Box::new(self))
+    }
+    fn len(&self) -> u32 {
+        match *self {
+            Cons(_, ref tail) => 1 + tail.len(),
+            // Base Case: An empty list has zero length
+            Nil => 0
+        }
+    }
+    fn stringify(&self) -> String {
+        match *self {
+            Cons(head, ref tail) => {
+                // `format!` is similar to `print!`, but returns a heap
+                // allocated string instead of printing to the console
+                format!("{}, {}", head, tail.stringify())
+            },
+            Nil => {
+                format!("Nil")
+            },
+        }
+    }
+}
+
+static LANGUAGE: &str = "Rust";
+const THRESHOLD: i32 = 10;
+
+fn is_big(n: i32) -> bool {
+    // Access constant in some function
+    n > THRESHOLD
+}
 
 enum Status {
     Rich,
@@ -184,33 +230,25 @@ fn main() {
     println!("violets are #{:06x}", Color::Blue as i32);
 
     // 3.2.3 linked-list
-    enum List {
-        // Cons: Tuple struct that wraps an element and a pointer to the next node
-        Cons(u32, Box<List>),
-        // Nil: A node that signifies the end of the linked list
-        Nil,
-    }
-    // Methods can be attached to an enum
-    impl List {
-        // Create an empty list
-        fn new() -> List {
-            // `Nil` has type `List`
-            Nil
-        }
-        // Consume a list, and return the same list with a new element at its front
-        fn prepend(self, elem: u32) -> List {
-            // `Cons` also has type List
-            Cons(elem, Box::new(self))
-        }
-        fn len(&self) -> u32 {
-            match *self {
-                Cons(_, ref tail) => 1 + tail.len(),
-                // Base Case: An empty list has zero length
-                Nil => 0
-            }
-        }
+    // Create an empty linked list
+    let mut list = List::new();
+    // Prepend some elements
+    list = list.prepend(1);
+    list = list.prepend(2);
+    list = list.prepend(3);
 
+    // Show the final state of the list
+    println!("linked list has length: {}", list.len());
+    println!("{}", list.stringify());
+
+    // 3.3 constants
+    let n = 16;
+
+    // Access constant in the main thread
+    println!("This is {}", LANGUAGE);
+    println!("The threshold is {}", THRESHOLD);
+    println!("{} is {}", n, if is_big(n) { "big" } else { "small" });
+
+    // Error! Cannot modify a `const`.
+    // THRESHOLD = 5;
 }
-
-
-
