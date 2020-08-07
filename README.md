@@ -134,3 +134,23 @@
   1. 完成 8，9，10th Chapter
 
 * 坚持 daily review, 逼自己一把，今晚好好睡觉，Go!
+
+## Day9
+
+* forget to record
+
+## Day10
+
+* forget to record
+
+## Day11
+
+* 事件1：
+
+  1. 完成 8th chapter
+
+* 计划：
+
+  1. 完成 9，10th Chapter
+
+* 坚持 daily review, 逼自己一把，今晚好好睡觉，Go!
